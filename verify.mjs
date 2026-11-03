@@ -1,0 +1,12 @@
+import { chromium } from 'playwright-core';
+const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+await page.goto('http://127.0.0.1:4517/', { waitUntil: 'networkidle' });
+await page.screenshot({ path: 'lab-desktop.png', fullPage: true });
+const desktop = { title: await page.title(), h1: await page.locator('h1').count(), h2: await page.locator('h2').count(), images: await page.locator('img').count(), cta: await page.locator('a[href="#contact"]').count(), svg: await page.locator('[data-system-drawing] svg').count() };
+await page.setViewportSize({ width: 390, height: 844 });
+await page.reload({ waitUntil: 'networkidle' });
+await page.screenshot({ path: 'lab-mobile.png', fullPage: true });
+const mobile = { horizontalOverflow: await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth), navVisible: await page.locator('nav').isVisible(), bodyText: (await page.locator('body').innerText()).length };
+await browser.close();
+console.log(JSON.stringify({ desktop, mobile }, null, 2));
