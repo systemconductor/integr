@@ -1,0 +1,50 @@
+name: Review
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Astro checks and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+
+  pull-request:
+    name: Open pull request
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    concurrency:
+      group: open-pr-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: Open a PR unless the branch already has one
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          HEAD_BRANCH: ${{ github.ref_name }}
+        run: |
+          existing_pr=$(gh pr list --head "$HEAD_BRANCH" --base main --state open --json number --jq 'length')
+          if [ "$existing_pr" = "0" ]; then
+            gh pr create --base main --head "$HEAD_BRANCH" \
+              --title "Review: $HEAD_BRANCH" \
+              --body "Changes from \`$HEAD_BRANCH\` are ready for review. The Review workflow runs Astro diagnostics and a production build on each push. Review the changes and passing checks before merging."
+          fi
