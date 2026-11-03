@@ -31,11 +31,13 @@ const nav = [
       <section class="hero chapter" aria-labelledby="hero-title">
         <div class="hero-backdrop" aria-hidden="true"></div>
         <div class="hero-content">
+          <div class="hero-text-panel">
           <div class="hero-heading-box">
             <p class="hero-slogan">O futuro tem origem.</p>
-            <h1 id="hero-title"><span>Construímos sistemas</span><span>que sustentam</span><span class="hero-level"><em aria-label="o próximo nível."><span class="phrase-word phrase-word--cream" aria-hidden="true">o</span> <span class="phrase-word phrase-word--amber" aria-hidden="true">próximo</span> <span class="phrase-word phrase-word--orange" aria-hidden="true">nível.</span></em></span></h1>
+            <h1 id="hero-title"><span class="hero-desktop-title"><span>Construímos sistemas</span><span>que sustentam</span></span><span class="hero-mobile-title">Sistemas para</span><span class="hero-level"><em aria-label="o próximo nível."><span class="phrase-word phrase-word--cream" aria-hidden="true">o</span> <span class="phrase-word phrase-word--amber" aria-hidden="true">próximo</span> <span class="phrase-word phrase-word--orange" aria-hidden="true">nível.</span></em></span></h1>
           </div>
-          <p class="hero-copy">A INTEGR transforma complexidade operacional em sistemas inteligentes, confiáveis e prontos para escalar.</p>
+          <p class="hero-copy"><span class="hero-desktop-copy">A INTEGR transforma complexidade operacional em sistemas inteligentes, confiáveis e prontos para escalar.</span><span class="hero-mobile-copy">Transformamos complexidade em estrutura para sua empresa crescer.</span></p>
+          </div>
           <a class="button button--light" href="https://cal.com/integr/30min" target="_blank" rel="noopener noreferrer">Falar com a INTEGR <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-caption" aria-hidden="true"><span>INTEGR</span><span>Systems with intent</span></div>
@@ -525,5 +527,29 @@ const nav = [
     .social-links { flex-shrink:0; gap:8px; margin-left:auto; }
     .social-links a { min-height:68px; gap:8px; padding:22px 12px; }
     .social-links a span { display:none; }
+  }
+  .hero h1 .hero-mobile-title, .hero-mobile-copy { display:none; }
+  @media (max-width:760px) {
+    .hero { min-height:100svh; padding:112px 14vw 48px 6vw; align-items:flex-start; justify-content:flex-start; flex-direction:column; background:var(--ink); }
+    .hero-content { display:flex; flex-direction:column; min-height:calc(100svh - 160px); padding:0; max-width:32rem; position:relative; z-index:1; }
+    .hero-text-panel { display:flex; flex-direction:column; padding:0 4vw; }
+    .hero-heading-box { display:flow-root; width:100%; padding:0; }
+    .hero-heading-box::before { display:none; }
+    .hero .hero-slogan { position:absolute; top:0; left:4vw; display:flex; gap:12px; padding:0; margin:0; background:none; border:0; border-radius:0; box-shadow:none; color:var(--cream); font:500 10px/1.5 var(--mono); letter-spacing:.12em; }
+    .hero .hero-slogan::before { content:""; width:24px; height:1px; background:var(--orange); }
+    .hero h1 { width:100%; max-width:none; margin-top:clamp(44px,7svh,68px); font-size:clamp(3.6rem,17.5vw,7.25rem); line-height:.95; letter-spacing:-.065em; }
+    .hero h1 .hero-desktop-title, .hero-desktop-copy { display:none; }
+    .hero h1 .hero-mobile-title, .hero-mobile-copy { display:block; }
+    .hero h1 .hero-mobile-title { max-width:7ch; margin-bottom:.12em; }
+    .hero-level em { white-space:nowrap; }
+    .hero-level em .phrase-word--orange { display:block; }
+    .hero .hero-copy { max-width:29ch; margin:26px 0 0; color:#cbb59b; font:400 clamp(1.05rem,4.4vw,1.25rem)/1.55 var(--display); }
+    .hero .button { display:flex; justify-content:space-between; width:min(calc(100% - 8vw),340px); min-height:54px; margin:20px 0 0 4vw; padding-inline:20px; font-size:11px; }
+    .hero-backdrop { display:block; background-image:linear-gradient(90deg,rgba(23,15,7,.72) 0%,rgba(23,15,7,.5) 65%,rgba(23,15,7,.12) 100%),linear-gradient(180deg,rgba(23,15,7,.15) 0%,transparent 24%,rgba(23,15,7,.35) 70%,rgba(23,15,7,.7) 100%),url('/assets/integr-office-hero.png'); background-position:24% top; }
+  }
+  .header-cta { font-size:12px; }
+  .button { font-size:14px; }
+  @media (max-width:760px) {
+    .hero .button { font-size:13px; }
   }
 </style>
