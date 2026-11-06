@@ -460,16 +460,20 @@ const nav = [
     .system-detail p { max-width:32ch; margin-top:1.5rem; font-size:clamp(1rem,1.1vw,1.08rem); line-height:1.6; }
   }
   @media (min-width:761px) {
-    .systems-pin { grid-template-columns:minmax(0,12fr) minmax(390px,8fr); }
+    .systems-pin { grid-template-columns:minmax(0,12fr) minmax(0,8fr); padding-block:clamp(24px,4vh,48px); }
+    .systems-timeline { margin-top:0; }
     .systems-header { max-width:600px; }
-    .system-stage-row { grid-template-columns:clamp(88px,8vw,120px) minmax(0,1fr) minmax(160px,.42fr); gap:clamp(1.5rem,2.6vw,3rem); }
+    .system-stage-row { grid-template-columns:52px minmax(0,1fr) clamp(100px,10vw,160px); gap:clamp(12px,1.5vw,24px); height:auto; min-height:clamp(118px,16vh,175px); }
     .timeline-rail { left:8px; }
-    .stage-index { padding-left:2rem; }
-    .stage-copy { position:relative; z-index:1; padding-left:.5rem; }
+    .stage-index { padding-left:1rem; white-space:nowrap; font-size:10px; }
+    .stage-copy { position:relative; z-index:1; min-width:0; padding-left:0; }
+    .stage-copy h3 { font-size:clamp(1.4rem,3vw,3rem); line-height:1.05; }
+    .stage-node { min-width:0; padding:1rem .75rem; }
+    .stage-node span { font-size:clamp(9px,.8vw,11px); letter-spacing:.08em; }
     .system-detail-stack { min-height:clamp(280px,38vh,390px); }
     .system-detail h2 { font-size:clamp(3.8rem,5vw,6.5rem); line-height:.86; }
     .system-detail p { max-width:36ch; font-size:clamp(1rem,1.15vw,1.15rem); line-height:1.65; }
-    .system-stage-row:nth-child(2) .stage-copy { transform:translateY(-.7rem) !important; }
+    .system-stage-row:nth-child(2) .stage-copy { transform:none !important; }
   }
   @media (max-width:760px) {
     .timeline-rail { left:5px; }
