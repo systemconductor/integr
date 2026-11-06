@@ -49,7 +49,7 @@ const nav = [
             <p class="hero-slogan">O futuro tem origem.</p>
             <h1 id="hero-title"><span class="hero-desktop-title"><span>Construímos sistemas</span><span>que sustentam</span></span><span class="hero-mobile-title">Sistemas para</span><span class="hero-level"><em aria-label="o próximo nível."><span class="phrase-word phrase-word--cream" aria-hidden="true">o</span> <span class="phrase-word phrase-word--amber" aria-hidden="true">próximo</span> <span class="phrase-word phrase-word--orange" aria-hidden="true">nível.</span></em></span></h1>
           </div>
-          <p class="hero-copy"><span class="hero-desktop-copy">A INTEGR transforma complexidade operacional em sistemas inteligentes, confiáveis e prontos para escalar.</span><span class="hero-mobile-copy">Transformamos complexidade em estrutura para sua empresa crescer.</span></p>
+          <p class="hero-copy"><span class="hero-desktop-copy">Sua operação depende de processos manuais, ferramentas desconectadas e decisões sem clareza? É daí que começamos.</span><span class="hero-mobile-copy">Transformamos complexidade em estrutura para sua empresa crescer.</span></p>
           </div>
           <a class="button button--light" href="https://cal.com/integr/30min" target="_blank" rel="noopener noreferrer">Falar com a INTEGR <span aria-hidden="true">↗</span></a>
         </div>
@@ -575,6 +575,7 @@ const nav = [
   .approach::after { content:""; display:block; height:calc(18vh + 7px); }
   @media (min-width:761px) {
     .hero-heading-box { width:fit-content; padding:16px; }
+    .hero .hero-copy { max-width:48ch; margin-top:16px; }
     .hero .hero-slogan { display:inline-flex; gap:12px; padding:0; margin:0 0 30px; background:none; border:0; border-radius:0; box-shadow:none; color:var(--cream); font:500 13px/1.5 var(--mono); letter-spacing:.12em; text-transform:none; }
     .hero .hero-slogan::before { content:""; width:24px; height:1px; background:var(--orange); }
     .hero-heading-box::before { left:0; right:auto; width:var(--hero-glass-width,100%); border-radius:8px; opacity:.75; }
