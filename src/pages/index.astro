@@ -554,7 +554,7 @@ const nav = [
   .approach::after { content:""; display:block; height:calc(18vh + 7px); }
   @media (min-width:761px) {
     .hero-heading-box { width:fit-content; padding:16px; }
-    .hero-backdrop { background-position:left top; transform:scale(1.18); transform-origin:30% top; }
+    .hero::before { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none; background:linear-gradient(90deg,rgba(12,12,12,.6) 0%,rgba(12,12,12,.4) 45%,rgba(12,12,12,.08) 100%); }
     .hero .hero-copy { max-width:48ch; margin-top:16px; }
     .hero .hero-slogan { display:inline-flex; gap:12px; padding:0; margin:0 0 30px; background:none; border:0; border-radius:0; box-shadow:none; color:var(--cream); font:500 13px/1.5 var(--mono); letter-spacing:.12em; text-transform:none; }
     .hero .hero-slogan::before { content:""; width:24px; height:1px; background:var(--orange); }
