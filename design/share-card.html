@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>INTEGR sharing card artwork</title>
+    <style>
+      * { box-sizing:border-box; }
+      html, body { width:1200px; height:630px; margin:0; overflow:hidden; }
+      body { position:relative; background:#0c0c0c; }
+      .motif { position:absolute; inset:0; width:100%; height:100%; }
+      .motif path { fill:none; stroke-width:52; }
+      .signature { position:absolute; top:163px; left:320px; width:560px; text-align:center; }
+      .signature img { display:block; width:560px; height:auto; }
+      .signature p { margin:28px 0 0; color:#cead86; font:400 25px/1.5 Consolas,'Courier New',monospace; letter-spacing:2px; }
+    </style>
+  </head>
+  <body>
+    <svg class="motif" viewBox="0 0 1200 630" aria-hidden="true">
+      <path d="M1030 -100 V260 A200 200 0 0 1 830 460 H-100" stroke="#cead86" />
+      <path d="M1094 -100 V260 A264 264 0 0 1 830 524 H-100" stroke="#d27836" />
+      <path d="M1158 -100 V260 A328 328 0 0 1 830 588 H-100" stroke="#b74521" />
+    </svg>
+    <div class="signature">
+      <img src="../public/assets/integr-real-logo-white.png" alt="INTEGR" width="5499" height="1775" />
+      <p>O futuro tem origem.</p>
+    </div>
+  </body>
+</html>
