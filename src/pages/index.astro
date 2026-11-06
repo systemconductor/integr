@@ -553,10 +553,13 @@ const nav = [
   .hero h1 .hero-mobile-title, .hero-mobile-copy { display:none; }
   .approach::after { content:""; display:block; height:calc(18vh + 7px); }
   @media (min-width:761px) {
-    .hero-heading-box { width:fit-content; padding:16px; }
-    .hero::before { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none; background:linear-gradient(90deg,rgba(12,12,12,.6) 0%,rgba(12,12,12,.4) 45%,rgba(12,12,12,.08) 100%); }
+    .hero { padding-block:clamp(72px,8vh,96px); }
+    .hero-content { padding-block:0; }
+    .hero-heading-box { width:fit-content; padding:0 16px; }
+    .hero-backdrop { background-image:linear-gradient(100deg,rgba(23,15,7,.78) 0%,rgba(23,15,7,.42) 42%,transparent 68%),url('/assets/integr-office-hero.png'); }
+    .hero::before { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none; background:linear-gradient(90deg,rgba(12,12,12,.6) 0%,rgba(12,12,12,.4) 45%,transparent 66%); }
     .hero .hero-copy { max-width:48ch; margin-top:16px; }
-    .hero .hero-slogan { display:inline-flex; gap:12px; padding:0; margin:0 0 30px; background:none; border:0; border-radius:0; box-shadow:none; color:var(--cream); font:500 13px/1.5 var(--mono); letter-spacing:.12em; text-transform:none; }
+    .hero .hero-slogan { display:flex; width:fit-content; gap:12px; padding:0; margin:0 0 30px; background:none; border:0; border-radius:0; box-shadow:none; color:var(--cream); font:500 13px/1.5 var(--mono); letter-spacing:.12em; text-transform:none; }
     .hero .hero-slogan::before { content:""; width:24px; height:1px; background:var(--orange); }
   }
   @media (max-width:760px) {
