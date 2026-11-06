@@ -199,7 +199,7 @@ const nav = [
       const timelineProgress = document.querySelector<HTMLElement>('[data-timeline-progress]');
       const header = document.querySelector<HTMLElement>('[data-header]');
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const mobileSystems = window.matchMedia('(max-width: 760px), (max-height: 650px)');
+      const mobileSystems = window.matchMedia('(max-width: 760px), (max-height: 650px), (max-width: 1000px) and (max-height: 760px)');
       let activeDetailIndex = 0;
       let pendingDetailIndex = -1;
       let detailTimer: number | undefined;
@@ -496,7 +496,7 @@ const nav = [
   }
 
   /* Compact systems: read each stage in order without a pinned viewport. */
-  @media (max-width:760px), (max-height:650px) {
+  @media (max-width:760px), (max-height:650px), (max-width:1000px) and (max-height:760px) {
     .systems { min-height:0; padding:4.5rem 7vw 5rem; overflow:hidden; }
     .systems-pin { position:relative; top:auto; display:block; width:100%; min-height:0; padding:0; }
     .systems-header { width:100%; max-width:none; margin:0; padding:0; border:0; text-align:left; }
@@ -609,5 +609,19 @@ const nav = [
     .contact-brand p { margin-top:8px; font-size:11px; }
     .contact h2 { margin:16px 0 24px; font-size:clamp(1.8rem,5svh,3rem); }
     .contact-note { order:1; margin-top:16px; }
+  }
+
+  /* Tablet preview: give the explanation the full width above the graph. */
+  @media (min-width:761px) and (max-width:1000px) and (min-height:761px) {
+    .systems-pin { grid-template-columns:minmax(0,1fr); grid-template-areas:'header' 'timeline'; align-content:center; gap:24px; }
+    .systems-header { max-width:none; padding:0 0 0 20px; border-right:0; border-left:1px solid rgba(238,230,214,.28); text-align:left; }
+    .systems-header .chapter-label { margin-bottom:16px; }
+    .system-detail-stack { min-height:170px; }
+    .systems-header .system-detail h2 { font-size:clamp(2rem,4vw,2.5rem); line-height:1; }
+    .system-detail-phase { margin-bottom:12px; }
+    .system-detail p { max-width:48ch; margin-top:16px; font-size:1rem; line-height:1.55; }
+    .system-stage-row { min-height:100px; padding:10px 0; }
+    .stage-node { min-height:64px; padding:.6rem .75rem; }
+    .stage-node strong { font-size:1.3rem; }
   }
 </style>
