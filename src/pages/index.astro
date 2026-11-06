@@ -286,6 +286,27 @@ const nav = [
       });
 
       update();
+      const heroHeadingBox = document.querySelector<HTMLElement>('.hero-heading-box');
+      const heroTitle = document.querySelector<HTMLElement>('#hero-title');
+      const fitHeroGlass = () => {
+        if (!heroHeadingBox || !heroTitle || window.innerWidth <= 760) return;
+        const box = heroHeadingBox.getBoundingClientRect();
+        let textRight = box.left;
+        for (const selector of ['#hero-title', '.hero-slogan']) {
+          const element = heroHeadingBox.querySelector(selector);
+          if (!element) continue;
+          const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+          while (walker.nextNode()) {
+            const range = document.createRange();
+            range.selectNodeContents(walker.currentNode);
+            for (const rect of range.getClientRects()) textRight = Math.max(textRight, rect.right);
+          }
+        }
+        heroHeadingBox.style.setProperty('--hero-glass-width', `${textRight - box.left + 16}px`);
+      };
+      if (heroTitle) new ResizeObserver(fitHeroGlass).observe(heroTitle);
+      window.addEventListener('resize', fitHeroGlass);
+      document.fonts.ready.then(fitHeroGlass);
     </script>
   </body>
 </html>
